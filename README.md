@@ -37,5 +37,6 @@ git clone https://github.com/yourusername/xss-labs.git
 cd xss-labs
 pip install -r requirements.txt
 python app.py
+```
 
 >Made by [@povzayd](https://github.com/povzayd) & [@una55](https://GitHub.com/una55)
