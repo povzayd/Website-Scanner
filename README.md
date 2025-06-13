@@ -1,5 +1,4 @@
-# 🧠 XSS LABS | Web Vulnerability Scanner Terminal
-
+# 🧠Web Vulnerability Scanner 
 >A Simplee UI powered by Flask that scans for web vulnerabilities like open directories, missing headers, JS key leaks, and form misconfigurations — with downloadable reports in 📝 TXT, 📄 PDF, and 🧾 JSON formats.
 
 **USE BY VISITING [WEB-SCANNER V1.0]()**
@@ -31,7 +30,7 @@
 
 ---
 
-## 🛠️ Installation
+## ⚙️ Wanna Run Locally?:
 
 ```bash
 git clone https://github.com/yourusername/xss-labs.git
