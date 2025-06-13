@@ -1,0 +1,50 @@
+{
+  "url": "https://gcetkashmir.ac.in",
+  "status": "Scan Complete",
+  "vulnerabilities": [
+    {
+      "type": "Missing Header",
+      "header": "Strict-Transport-Security"
+    },
+    {
+      "type": "Missing Header",
+      "header": "X-Frame-Options"
+    },
+    {
+      "type": "Missing Header",
+      "header": "Content-Security-Policy"
+    },
+    {
+      "type": "Missing Header",
+      "header": "X-Content-Type-Options"
+    },
+    {
+      "type": "Missing Header",
+      "header": "Referrer-Policy"
+    },
+    {
+      "type": "Clickjacking",
+      "description": "Missing X-Frame-Options and CSP headers"
+    },
+    {
+      "type": "JS Leak",
+      "url": "https://gcetkashmir.ac.in/maps.google.com/maps/api/js?v=quarterly&language=en&libraries=geometry%2Cplaces%2Cvisualization&key=AIzaSyDb8xn_w_hKOXED1tmPBO_FKqD_hTe7oAY&callback=__wpgmzaMapEngineLoadedCallback&ver=6.8.1",
+      "match": "Potential API key or TODO found"
+    },
+    {
+      "type": "JS Leak",
+      "url": "https://gcetkashmir.ac.in/wp-content/plugins/wp-google-maps/lib/pep.js?ver=6.8.1",
+      "match": "Potential API key or TODO found"
+    },
+    {
+      "type": "JS Leak",
+      "url": "https://gcetkashmir.ac.in/wp-content/plugins/wp-google-maps/js/v8/wp-google-maps.min.js?ver=9.0.22",
+      "match": "Potential API key or TODO found"
+    },
+    {
+      "missing_password": true,
+      "missing_csrf": true,
+      "type": "Form Issue"
+    }
+  ]
+}
