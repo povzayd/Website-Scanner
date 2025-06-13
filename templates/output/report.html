@@ -1,0 +1,134 @@
+<!----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🛡️ Scan Report | XSS LABS</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #33ff33;
+      font-family: 'Courier New', monospace;
+    }
+
+    .glow {
+      text-shadow: 0 0 5px #33ff33, 0 0 10px #33ff33;
+    }
+
+    .report-box {
+      background-color: #1a1a1a;
+      border: 2px solid #33ff33;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body class="p-6 sm:p-10">
+  <h1 class="text-3xl md:text-5xl font-bold text-center glow mb-8">📊 SCAN REPORT</h1>
+
+  <div class="report-box max-w-4xl mx-auto">
+    <p><span class="glow">Target:</span> {{ data.url }}</p>
+    <p><span class="glow">Status:</span> {{ data.status }}</p>
+
+    <h2 class="text-2xl mt-6 glow">🕷️ Vulnerabilities Found:</h2>
+    <ul class="mt-4 list-disc ml-6 text-green-300">
+      {% for vuln in data.vulnerabilities %}
+        <li>
+          <strong>{{ vuln.type }}</strong>
+          {% if vuln.param %}
+            on param <code>{{ vuln.param }}</code>
+          {% endif %}
+          {% if vuln.payload %}
+            → Payload: <code>{{ vuln.payload }}</code>
+          {% endif %}
+          {% if vuln.header %}
+            → Missing Header: <code>{{ vuln.header }}</code>
+          {% endif %}
+        </li>
+      {% else %}
+        <li>No vulnerabilities detected ✅</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="text-center">
+    <a href="/" class="text-green-400 underline hover:text-green-200">🔙 Run Another Scan</a>
+  </div>
+</body>
+</html>
+----->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🛡️ Scan Report | XSS LABS</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #33ff33;
+      font-family: 'Courier New', monospace;
+    }
+    .glow {
+      text-shadow: 0 0 5px #33ff33, 0 0 10px #33ff33;
+    }
+    .report-box {
+      background-color: #1a1a1a;
+      border: 2px solid #33ff33;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body class="p-6 sm:p-10">
+  <h1 class="text-3xl md:text-5xl font-bold text-center glow mb-8">📊 SCAN REPORT</h1>
+
+  <div class="report-box max-w-4xl mx-auto">
+    <p><span class="glow">Target:</span> {{ data.url }}</p>
+    <p><span class="glow">Status:</span> {{ data.status }}</p>
+
+    <h2 class="text-2xl mt-6 glow">🕷️ Vulnerabilities Found:</h2>
+    <ul class="mt-4 list-disc ml-6 text-green-300">
+      {% for vuln in data.vulnerabilities %}
+        <li class="mb-2">
+          <strong>{{ vuln.type }}</strong>
+          <ul class="ml-4 list-none">
+            {% for key, value in vuln.items() %}
+              {% if key != 'type' %}
+              <li><span class="text-green-500">{{ key }}:</span> <code>{{ value }}</code></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
+      {% else %}
+        <li>No vulnerabilities detected ✅</li>
+      {% endfor %}
+    </ul>
+
+    <div class="text-center mt-6 space-x-4">
+      <a href="/output/scan_report.json" download="scan_report.json"
+         class="bg-green-800 text-white py-2 px-4 rounded hover:bg-green-600">
+        📥 Download JSON
+      </a>
+      <a href="/download/txt"
+         class="bg-green-700 text-white py-2 px-4 rounded hover:bg-green-500">
+        📄 Download TXT
+      </a>
+      <a href="/download/pdf"
+         class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-400">
+        🧾 Download PDF
+      </a>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <a href="/" class="text-green-400 underline hover:text-green-200">🔙 Run Another Scan</a>
+  </div>
+</body>
+</html>
