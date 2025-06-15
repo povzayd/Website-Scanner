@@ -1,71 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🔍 XSS LABS - Scanner Terminal</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+    <title>Website Scanner Version 2.0</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&family=Manrope:wght@400;700;800&family=Noto+Sans:wght@400;700;900"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
     <style>
-        body {
-            background-color: #0d0d0d;
-            color: #33ff33;
-            font-family: 'Courier New', monospace;
-            overflow-x: hidden;
-        }
-
-        .glow {
-            text-shadow: 0 0 5px #33ff33, 0 0 10px #33ff33;
-        }
-
-        .terminal-box {
-            background-color: #1a1a1a;
-            border: 2px solid #33ff33;
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .scan-btn:hover {
-            box-shadow: 0 0 10px #33ff33;
-        }
-
-        .animate-scan {
-            animation: scan-pulse 1s infinite alternate;
-        }
-
-        @keyframes scan-pulse {
-            from {
-                box-shadow: 0 0 5px #33ff33;
-            }
-            to {
-                box-shadow: 0 0 20px #33ff33, 0 0 40px #00ffcc;
-            }
-        }
+      body {
+        font-family: Manrope, "Noto Sans", sans-serif;
+      }
     </style>
-</head>
-<body class="p-4 sm:p-10">
-    <h1 class="text-3xl md:text-5xl font-bold mb-8 glow text-center">WEBSITE SCANNER 1.0</h1>
+  </head>
+  <body class="bg-[#221117] text-white min-h-screen flex flex-col justify-between">
 
-    <div class="terminal-box max-w-2xl mx-auto">
-        <form action="/scan" method="post" class="space-y-4">
-            <label for="url" class="block text-lg glow">Enter Target URL:</label>
-            <input
-                type="text"
-                id="url"
-                name="url"
-                placeholder="https://target.site"
-                required
-                class="w-full px-4 py-2 bg-black border border-green-500 text-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
+    <!-- Main Scanner Section -->
+    <main class="flex-grow flex flex-col justify-center items-center px-4 py-10 bg-cover bg-center bg-no-repeat"
+      style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0,0,0,0.6)), url('test.jpg');">
+      
+      <div class="text-center max-w-2xl">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Website Scanner Version 2.0</h1>
+        <p class="text-base md:text-lg mb-6">
+          Our tool helps identify & fix vulnerabilities on your site — protect your visitors and reputation.
+        </p>
+      </div>
 
-            <button type="submit"
-                class="scan-btn animate-scan bg-green-700 text-black font-bold py-2 px-6 rounded w-full uppercase">
-                Initiate Scan
-            </button>
-        </form>
-    </div>
-<a href="https://github.com/povzayd" target="_blank">GitHub</a>
-    <footer class="mt-8 text-center text-green-700 text-sm">
-        WEBSITE SCANNER v1.0 :)
+      <!-- Scanner Form -->
+      <form action="/scan" method="post" class="w-full max-w-xl flex flex-col gap-4">
+        <div class="flex">
+          <span class="inline-flex items-center px-3 bg-[#331922] border border-[#673244] rounded-l-xl text-[#c992a4]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+            </svg>
+          </span>
+          <input
+            type="text"
+            name="url"
+            required
+            placeholder="https://gooooogle.com"
+            class="form-input w-full bg-[#331922] border-y border-[#673244] text-white placeholder:text-[#c992a4] px-4 rounded-none focus:outline-none"
+          />
+          <button type="submit"
+            class="bg-[#c8104d] text-white font-bold px-6 rounded-r-xl hover:bg-red-600 transition">
+            Scan
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <!-- Action Buttons -->
+    <section class="px-4 py-6 flex flex-col items-center gap-4">
+      <a href="https://github.com/povzayd/Website-Scanner" target="_blank"
+        class="w-full max-w-md bg-[#48232f] text-white font-bold py-2 px-4 rounded-xl text-center hover:bg-[#5a2e3b] transition">
+        Source Code :)
+      </a>
+     <a href="https://github.com/povzayd/ultron" target="_blank"
+        class="w-full max-w-md bg-[#48232f] text-white font-bold py-2 px-4 rounded-xl text-center hover:bg-[#5a2e3b] transition">
+        Got Some API Keys, Validate Using Ultron </a>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-[#a96b7c] text-sm py-4">
+      WEBSITE SCANNER v1.0 — &copy; 2025 XSS LABS
     </footer>
-</body>
+  </body>
 </html>
+
