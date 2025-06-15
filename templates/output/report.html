@@ -1,134 +1,78 @@
-<!----
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🛡️ Scan Report | XSS LABS</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #0d0d0d;
-      color: #33ff33;
-      font-family: 'Courier New', monospace;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>📊 Scan Report | XSS LABS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    .glow {
-      text-shadow: 0 0 5px #33ff33, 0 0 10px #33ff33;
-    }
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&family=Manrope:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700;900"
+    />
 
-    .report-box {
-      background-color: #1a1a1a;
-      border: 2px solid #33ff33;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-    }
-  </style>
-</head>
-<body class="p-6 sm:p-10">
-  <h1 class="text-3xl md:text-5xl font-bold text-center glow mb-8">📊 SCAN REPORT</h1>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body class="min-h-screen bg-[#221117] text-white p-4 md:p-10" style="font-family: Manrope, 'Noto Sans', sans-serif;">
+    <div class="max-w-4xl mx-auto @container">
+      <div class="bg-[#331922] border border-[#673244] rounded-xl p-6 sm:p-10 shadow-lg">
+        <h1 class="text-3xl sm:text-4xl font-black text-center mb-8">📊 Scan Report</h1>
 
-  <div class="report-box max-w-4xl mx-auto">
-    <p><span class="glow">Target:</span> {{ data.url }}</p>
-    <p><span class="glow">Status:</span> {{ data.status }}</p>
+        <!-- Info -->
+        <div class="space-y-2 text-base sm:text-lg">
+          <p><span class="text-[#c992a4] font-semibold">Target:</span> {{ data.url }}</p>
+          <p><span class="text-[#c992a4] font-semibold">Status:</span> {{ data.status }}</p>
+        </div>
 
-    <h2 class="text-2xl mt-6 glow">🕷️ Vulnerabilities Found:</h2>
-    <ul class="mt-4 list-disc ml-6 text-green-300">
-      {% for vuln in data.vulnerabilities %}
-        <li>
-          <strong>{{ vuln.type }}</strong>
-          {% if vuln.param %}
-            on param <code>{{ vuln.param }}</code>
-          {% endif %}
-          {% if vuln.payload %}
-            → Payload: <code>{{ vuln.payload }}</code>
-          {% endif %}
-          {% if vuln.header %}
-            → Missing Header: <code>{{ vuln.header }}</code>
-          {% endif %}
-        </li>
-      {% else %}
-        <li>No vulnerabilities detected ✅</li>
-      {% endfor %}
-    </ul>
-  </div>
-
-  <div class="text-center">
-    <a href="/" class="text-green-400 underline hover:text-green-200">🔙 Run Another Scan</a>
-  </div>
-</body>
-</html>
------>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🛡️ Scan Report | XSS LABS</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #0d0d0d;
-      color: #33ff33;
-      font-family: 'Courier New', monospace;
-    }
-    .glow {
-      text-shadow: 0 0 5px #33ff33, 0 0 10px #33ff33;
-    }
-    .report-box {
-      background-color: #1a1a1a;
-      border: 2px solid #33ff33;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-    }
-  </style>
-</head>
-<body class="p-6 sm:p-10">
-  <h1 class="text-3xl md:text-5xl font-bold text-center glow mb-8">📊 SCAN REPORT</h1>
-
-  <div class="report-box max-w-4xl mx-auto">
-    <p><span class="glow">Target:</span> {{ data.url }}</p>
-    <p><span class="glow">Status:</span> {{ data.status }}</p>
-
-    <h2 class="text-2xl mt-6 glow">🕷️ Vulnerabilities Found:</h2>
-    <ul class="mt-4 list-disc ml-6 text-green-300">
-      {% for vuln in data.vulnerabilities %}
-        <li class="mb-2">
-          <strong>{{ vuln.type }}</strong>
-          <ul class="ml-4 list-none">
-            {% for key, value in vuln.items() %}
-              {% if key != 'type' %}
-              <li><span class="text-green-500">{{ key }}:</span> <code>{{ value }}</code></li>
-              {% endif %}
+        <!-- Vulns -->
+        <div class="mt-8">
+          <h2 class="text-xl font-bold text-white mb-4">🕷 Vulnerabilities Found</h2>
+          <ul class="space-y-4">
+            {% for vuln in data.vulnerabilities %}
+              <li class="border border-[#673244] rounded-lg p-4 bg-[#3d1d2a]">
+                <div class="text-[#ff4d6d] font-semibold mb-2">{{ vuln.type }}</div>
+                <ul class="ml-2 text-sm space-y-1">
+                  {% for key, value in vuln.items() %}
+                    {% if key != 'type' %}
+                      <li>
+                        <span class="text-[#c992a4]">{{ key }}:</span>
+                        <code class="bg-[#4a2b34] px-1.5 py-0.5 rounded text-white">{{ value }}</code>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </li>
+            {% else %}
+              <li class="text-green-400 font-semibold">✅ No vulnerabilities detected</li>
             {% endfor %}
           </ul>
-        </li>
-      {% else %}
-        <li>No vulnerabilities detected ✅</li>
-      {% endfor %}
-    </ul>
+        </div>
 
-    <div class="text-center mt-6 space-x-4">
-      <a href="/output/scan_report.json" download="scan_report.json"
-         class="bg-green-800 text-white py-2 px-4 rounded hover:bg-green-600">
-        📥 Download JSON
-      </a>
-      <a href="/download/txt"
-         class="bg-green-700 text-white py-2 px-4 rounded hover:bg-green-500">
-        📄 Download TXT
-      </a>
-      <a href="/download/pdf"
-         class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-400">
-        🧾 Download PDF
-      </a>
+        <!-- Buttons -->
+        <div class="mt-10 flex flex-wrap gap-4 justify-center">
+          <a href="/output/scan_report.json" download="scan_report.json"
+            class="bg-[#c8104d] hover:bg-[#a60d3f] text-white py-2 px-5 rounded-xl text-sm font-bold transition">
+            📥 Download JSON
+          </a>
+          <a href="/download/txt"
+            class="bg-[#48232f] hover:bg-[#5a2d3b] text-white py-2 px-5 rounded-xl text-sm font-bold transition">
+            📄 Download TXT
+          </a>
+          <a href="/download/pdf"
+            class="bg-[#48232f] hover:bg-[#5a2d3b] text-white py-2 px-5 rounded-xl text-sm font-bold transition">
+            🧾 Download PDF
+          </a>
+        </div>
+
+        <!-- Run Another -->
+        <div class="mt-6 text-center">
+          <a href="/" class="text-[#c992a4] underline hover:text-white transition">
+            🔙 Run Another Scan
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="text-center">
-    <a href="/" class="text-green-400 underline hover:text-green-200">🔙 Run Another Scan</a>
-  </div>
-</body>
+  </body>
 </html>
