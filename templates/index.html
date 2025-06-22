@@ -11,7 +11,7 @@
       rel="stylesheet"
       as="style"
       onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&family=Manrope:wght@400;700;800&family=Noto+Sans:wght@400;700;900"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Noto+Sans:wght@400;700;900&display=swap"
     />
 
     <!-- Tailwind CSS -->
@@ -21,15 +21,41 @@
     <style>
       body {
         font-family: Manrope, "Noto Sans", sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      main {
+        position: relative;
+        z-index: 1;
+      }
+
+      .parallax-bg {
+        background-image: url('./pxfuel.jpg');
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        transition: filter 0.3s ease;
+      }
+
+      .scrolled .parallax-bg {
+        filter: brightness(0.4);
       }
     </style>
   </head>
-  <body class="bg-[#221117] text-white min-h-screen flex flex-col justify-between">
 
-    <!-- Main Scanner Section -->
-    <main class="flex-grow flex flex-col justify-center items-center px-4 py-10 bg-cover bg-center bg-no-repeat"
-      style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0,0,0,0.6)), url('https://github.com/povzayd/Website-Scanner/templates/img1.jpg');">
-      
+  <body class="bg-[#221117] text-white min-h-screen flex flex-col justify-between relative">
+
+    <!-- Parallax Background -->
+    <div class="parallax-bg"></div>
+
+    <!-- Main Section -->
+    <main class="flex-grow flex flex-col justify-center items-center px-4 py-10 bg-black/40">
       <div class="text-center max-w-2xl">
         <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Website Scanner Version 2.0</h1>
         <p class="text-base md:text-lg mb-6">
@@ -61,21 +87,32 @@
     </main>
 
     <!-- Action Buttons -->
-    <section class="px-4 py-6 flex flex-col items-center gap-4">
+    <section class="px-4 py-6 flex flex-col items-center gap-4 bg-[#1a0d12]/90 backdrop-blur-sm">
       <a href="https://github.com/povzayd/Website-Scanner" target="_blank"
         class="w-full max-w-md bg-[#48232f] text-white font-bold py-2 px-4 rounded-xl text-center hover:bg-[#5a2e3b] transition">
         Source Code :)
       </a>
-     <a href="https://github.com/povzayd/ultron" target="_blank"
+      <a href="https://github.com/povzayd/ultron" target="_blank"
         class="w-full max-w-md bg-[#48232f] text-white font-bold py-2 px-4 rounded-xl text-center hover:bg-[#5a2e3b] transition">
-        Got Some API Keys? Validate Using Ultron </a>
-
+        Got Some API Keys? Validate Using Ultron
+      </a>
     </section>
 
     <!-- Footer -->
-    <footer class="text-center text-[#a96b7c] text-sm py-4">
-      WEBSITE SCANNER v2.0 — &copy; 2025 <a href="https://github.com/povzayd/" target="_blank">Zaid </a> | <a href="https://github.com/una55/" target="_blank">Unass </a> 
+    <footer class="text-center text-[#a96b7c] text-sm py-4 bg-[#13070a]/90 backdrop-blur-sm">
+      WEBSITE SCANNER v2.0 — &copy; 2025 <a href="https://github.com/povzayd/" target="_blank">Zaid </a> |
+      <a href="https://github.com/una55/" target="_blank">Unass</a>
     </footer>
+
+    <!-- Scroll-triggered Darkening -->
+    <script>
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          document.body.classList.add("scrolled");
+        } else {
+          document.body.classList.remove("scrolled");
+        }
+      });
+    </script>
   </body>
 </html>
-
