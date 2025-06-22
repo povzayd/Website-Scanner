@@ -1,7 +1,7 @@
 # 🧠Web Vulnerability Scanner 
 >A Simplee UI powered by Flask that scans for web vulnerabilities like open directories, missing headers, JS key leaks, and form misconfigurations — with downloadable reports in 📝 TXT, 📄 PDF, and 🧾 JSON formats.
 
-**USE BY VISITING [WEB-SCANNER V1.0](https://website-scanner-fsid.onrender.com/)**
+**USE BY VISITING [WEB-SCANNER V2.0](https://website-scanner-production.up.railway.app/)**
 ---
 
 ## 🚀 Features
@@ -16,7 +16,6 @@
   - `scan_report.json`
   - `scan_report.txt`
   - `scan_report.pdf`
-- 🌐 Responsive UI
 
 ---
 
@@ -26,7 +25,6 @@
 - ⚗️ Flask
 - 💄 TailwindCSS (CDN)
 - 📄 xhtml2pdf (for PDF generation)
-- 💻 Terminal-UI aesthetic
 
 ---
 
@@ -39,4 +37,4 @@ pip install -r requirements.txt
 python app.py
 ```
 
->Made by 🫀
+>Made with 🐍
